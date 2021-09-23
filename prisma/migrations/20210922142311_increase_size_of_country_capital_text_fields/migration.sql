@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "country_capitals" ALTER COLUMN "country" SET DATA TYPE VARCHAR(100),
+ALTER COLUMN "capital" SET DATA TYPE VARCHAR(100);

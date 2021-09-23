@@ -1,0 +1,28 @@
+// PRISMA FUNCTIONS I ALWAYS FORGET
+// npx prisma migrate dev --name [migrationNameGoesHere] --preview-feature
+// npx prisma migrate reset --force
+
+datasource db {
+  provider = "postgresql"
+  url = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Question {
+  id Int @default(autoincrement()) @id @map(name: "id")
+  text String @db.VarChar(20) @map(name: "text")
+  answers String[] @map(name: "answers")
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  deactivatedAt DateTime? @map(name: "deactivated_at")
+  @@map(name: "questions")
+}
+
+model CountryCapital {
+  id Int @default(autoincrement()) @id @map(name: "id")
+  country String @db.VarChar(100) @unique @map(name: "country")
+  capital String? @db.VarChar(100) @map(name: "capital")
+  @@map(name: "country_capitals")
+}
